@@ -1,2 +1,3 @@
 *.pyc
 db.json
+local_settings.py
