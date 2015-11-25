@@ -51,7 +51,7 @@ def main():
     for entry in rss.entries:
         try:
             entry_published = datetime.utcfromtimestamp(calendar.timegm(entry.published_parsed))
-            if entry_published > last_post_date:
+            if entry_published > last_post_date and str(entry.author) == 'PyNSK - группа о Python':
                 new_entries.append(entry)
         except AttributeError as e:
             logging.error("%s\n%s", e, entry)
