@@ -13,6 +13,7 @@ from lxml.html import fragment_fromstring
 from twx.botapi import TelegramBot
 
 import settings
+import dateutil.parser
 
 
 def remove_tags(text):
@@ -32,8 +33,7 @@ def load_settings():
         with open('db.json', encoding='utf-8') as f:
             tgm_data = json.load(f)
 
-        last_post_date = datetime.strptime(tgm_data['last_post_date'],
-                                           '%Y-%m-%dT%H:%M:%S')
+        last_post_date = dateutil.parser.parse(tgm_data['last_post_date'])
     else:
         last_post_date = datetime(1, 1, 1, 0, 0, 0)
         tgm_data = {}
