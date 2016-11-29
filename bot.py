@@ -84,7 +84,8 @@ def main():
         try:
 
             logging.debug("Raw message:\n%s\n", entry.description)
-            message = remove_tags(entry.description)
+            text = entry.title + '\n\n' + entry.link + '\n\n' + entry.description
+            message = remove_tags(text)
             logging.debug("message:\n%s\n", message)
         except AttributeError as e:
             logging.error("%s\n%s", e, entry)
